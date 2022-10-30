@@ -230,6 +230,7 @@ void calc1(void){
     FSDY = 4.0/DY;
 #pragma omp parallel private(I,J)
 #pragma omp for schedule(static)
+#pragma omp simd
     for (I=0;I<M;I++)
         for(J=0;J<N;J++){
             CU[I+1][J] = .5*(P[I+1][J]+P[I][J])*U[I+1][J];
@@ -276,6 +277,7 @@ void calc2(void){
     TDTSDY = TDT/DY;
 #pragma omp parallel private(I,J)
 #pragma omp for schedule(static)
+#pragma omp simd
 
     for(I=0;I<M;I++)
         for(J=0;J<N;J++){
@@ -332,6 +334,7 @@ void calc3(void){
     int I,J;
 #pragma omp parallel private(I,J)
 #pragma omp for schedule(static)
+#pragma omp simd
 
     for(I=0;I<M;I++)
         for(J=0;J<N;J++){
